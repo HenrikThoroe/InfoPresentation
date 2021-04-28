@@ -1,0 +1,36 @@
+.table {
+}
+
+.tableRow {
+    position: relative;
+}
+
+.tableRow:not(:last-of-type):after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: gray;
+    border-radius: 2px;
+
+    bottom: 0;
+    left: 0;
+}
+
+.tableHeader:first-of-type:after {
+    height: 2px;
+    background: black;
+}
+
+.tableCell {
+    padding: 0.5rem;
+}
+
+.tableCell:not(:last-child) {
+    border-right: 1px dotted black;
+}
+
+.tablerHeaderCell {
+    border-bottom: 10px dotted gray;
+}
