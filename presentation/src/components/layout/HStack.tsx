@@ -9,6 +9,9 @@ export interface Props extends ReactProps<HTMLDivElement> {
     verticalAlignment?: Alignment
     maxItemWidth?: string
     minItemWidth?: string
+    padding?: string
+    shrinkHeight?: boolean
+    shrinkWidth?: boolean
 }
 
 export default function HStack(props: Props) {
@@ -19,6 +22,9 @@ export default function HStack(props: Props) {
         maxItemWidth,
         minItemWidth,
         style,
+        padding,
+        shrinkWidth,
+        shrinkHeight,
         ...other
     } = props
     let injectedStyle: React.CSSProperties = {
@@ -46,6 +52,9 @@ export default function HStack(props: Props) {
             mainAlignment={horizontalAlignment || "start"}
             secondaryAlignment={verticalAlignment || "stretch"}
             direction="row"
+            padding={padding}
+            shrinkWidth={shrinkWidth}
+            shrinkHeight={shrinkHeight}
             style={injectedStyle}
         >
             {props.children}

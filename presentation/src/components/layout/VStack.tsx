@@ -6,10 +6,21 @@ export interface Props extends ReactProps<HTMLDivElement> {
     spacing?: string
     horizontalAlignment?: Alignment
     alignment?: Alignment
+    padding?: string
+    shrinkHeight?: boolean
+    shrinkWidth?: boolean
 }
 
 export default function VStack(props: Props) {
-    const { spacing, horizontalAlignment, alignment: verticalAlignment, ...other } = props
+    const {
+        spacing,
+        horizontalAlignment,
+        alignment: verticalAlignment,
+        padding,
+        shrinkWidth,
+        shrinkHeight,
+        ...other
+    } = props
 
     return (
         <Stack
@@ -18,6 +29,9 @@ export default function VStack(props: Props) {
             mainAlignment={verticalAlignment || "start"}
             secondaryAlignment={horizontalAlignment || "stretch"}
             direction="column"
+            padding={padding}
+            shrinkWidth={shrinkWidth}
+            shrinkHeight={shrinkHeight}
         >
             {props.children}
         </Stack>

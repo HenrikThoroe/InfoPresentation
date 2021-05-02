@@ -10,10 +10,13 @@ export interface Props extends ReactProps<HTMLDivElement> {
     mainAlignment: Alignment
     secondaryAlignment: Alignment
     direction: "row" | "column"
+    padding?: string
+    shrinkHeight?: boolean
+    shrinkWidth?: boolean
 }
 
 export default function Stack(props: Props) {
-    const {
+    let {
         direction,
         spacing,
         mainAlignment: verticalAlignment,
@@ -21,12 +24,12 @@ export default function Stack(props: Props) {
         className,
         children,
         style,
+        padding,
+        shrinkHeight,
+        shrinkWidth,
         ...other
     } = props
-    const customStyle: React.CSSProperties = {
-        ...style,
-        ["--spacing" as any]: spacing
-    }
+
     let customChildren: ReactNode[] = []
 
     if (children instanceof Array) {
@@ -44,6 +47,18 @@ export default function Stack(props: Props) {
         }
     } else {
         customChildren = [children]
+    }
+
+    if (padding) {
+        style = { ...style, padding: padding }
+    }
+
+    if (shrinkHeight) {
+        style = { ...style, height: "max-content" }
+    }
+
+    if (shrinkWidth) {
+        style = { ...style, width: "max-content" }
     }
 
     return (
