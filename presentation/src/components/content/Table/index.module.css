@@ -27,6 +27,10 @@
     padding: 0.5rem;
 }
 
+.tableCell.centered {
+    text-align: center;
+}
+
 .tableCell:not(:last-child) {
     border-right: 1px dotted black;
 }
