@@ -5,6 +5,7 @@ export interface Props {
     italic?: boolean
     size?: "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl" | number
     alignment?: "left" | "center" | "right"
+    fixedWidth?: string
 }
 
 export default function Text(props: Props) {
@@ -59,7 +60,9 @@ export default function Text(props: Props) {
                 fontSize: size,
                 fontWeight: weight,
                 textAlign: props.alignment,
-                fontStyle: props.italic ? "italic" : "normal"
+                fontStyle: props.italic ? "italic" : "normal",
+                width: props.fixedWidth,
+                display: "inline-block"
             }}
         >
             {props.quote ? `"${props.children}"` : props.children}
