@@ -6,6 +6,7 @@ export interface Props {
     numbers: number[]
     highlighted?: [number, number]
     active?: number
+    shrink?: boolean
 }
 
 export default function DataArray(props: Props) {
@@ -24,7 +25,8 @@ export default function DataArray(props: Props) {
                     key={index}
                     className={csx({
                         [styles.active]: index === props.active,
-                        [styles.highlighted]: isInRange(index)
+                        [styles.highlighted]: isInRange(index),
+                        [styles.shrink]: props.shrink
                     })}
                 >
                     <Text weight="bold" size="l">
