@@ -1,3 +1,5 @@
+#include "sum_range.hpp"
+
 namespace util {
 
     int sum_range(int lower, int upper) {
