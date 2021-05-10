@@ -3,7 +3,6 @@ import Text from "../components/content/Text"
 import Container from "../components/layout/Container"
 import HStack from "../components/layout/HStack"
 import VStack from "../components/layout/VStack"
-import createRuntimeData from "../model/createRuntimeData"
 import fetchBenchmarkData from "../model/data/fetchBenchmarkData"
 
 export default function Benchmarks() {
@@ -55,6 +54,15 @@ export default function Benchmarks() {
                             dataKey="time.quicksort"
                             type="monotone"
                             stroke="#37de3a"
+                            dot={false}
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                        />
+                        <Line
+                            name="Merge"
+                            dataKey="time.mergesort"
+                            type="monotone"
+                            stroke="#ffc658"
                             dot={false}
                             strokeWidth={2}
                             strokeLinecap="round"
