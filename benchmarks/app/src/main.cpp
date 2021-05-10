@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "cxxopts.hpp"
 
 #include "driver.hpp"
@@ -8,7 +10,7 @@ int main(int argc, char* argv[]) {
     cxxopts::Options options("sortbench", "Command line tool to bench the performance of different sorting algorithms");
     options.add_options()
         ("c,cores", "Number of Used Cores", cxxopts::value<uint64_t>()->default_value("2"))
-        ("m,memory", "Memory in Gigabyte Used by Application", cxxopts::value<uint64_t>()->default_value("3"))
+        ("m,memory", "Max. Memory in Megabyte Used by Application for One Iteration", cxxopts::value<uint64_t>()->default_value("3"))
         ("s,sections", "Number of Entries in Result Files", cxxopts::value<uint64_t>()->default_value("100"))
         ("o,out", "Path to Output Location", cxxopts::value<std::string>()->default_value("./"))
         ("h,help", "Show Usage Hints")
@@ -27,8 +29,11 @@ int main(int argc, char* argv[]) {
         cmdResults["sections"].as<uint64_t>()
     );
 
+    std::cout << "Quick Sort" << std::endl;
     driver.run(model::quick_sort);
     driver.save("Quick Sort", cmdResults["out"].as<std::string>() + "/quick.json");
+
+    std::cout << "Radix Sort" << std::endl;
     driver.run(model::radix_sort);
     driver.save("Radix Sort", cmdResults["out"].as<std::string>() + "/radix.json");
 
