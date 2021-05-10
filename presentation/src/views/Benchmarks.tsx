@@ -4,6 +4,7 @@ import Container from "../components/layout/Container"
 import HStack from "../components/layout/HStack"
 import VStack from "../components/layout/VStack"
 import createRuntimeData from "../model/createRuntimeData"
+import fetchBenchmarkData from "../model/data/fetchBenchmarkData"
 
 export default function Benchmarks() {
     return (
@@ -27,12 +28,9 @@ export default function Benchmarks() {
                 <ResponsiveContainer width={1200} height={800}>
                     <LineChart
                         margin={{ bottom: 30, left: 30, right: 30, top: 30 }}
-                        data={createRuntimeData(Math.pow(10, 3)).map(d => ({
-                            ...d,
-                            ...{ n: d.n * 9 }
-                        }))}
+                        data={fetchBenchmarkData()}
                     >
-                        <XAxis dataKey="x">
+                        <XAxis dataKey="size">
                             <Label position="insideTopRight" offset={30}>
                                 Größe der Datenmenge (n)
                             </Label>
@@ -45,7 +43,7 @@ export default function Benchmarks() {
                         <Legend />
                         <Line
                             name="Radix"
-                            dataKey="n"
+                            dataKey="time.radixsort"
                             type="monotone"
                             stroke="#de4337"
                             dot={false}
@@ -54,7 +52,7 @@ export default function Benchmarks() {
                         />
                         <Line
                             name="Quick"
-                            dataKey="nlog"
+                            dataKey="time.quicksort"
                             type="monotone"
                             stroke="#37de3a"
                             dot={false}
