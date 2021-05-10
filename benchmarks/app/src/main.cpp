@@ -29,11 +29,11 @@ int main(int argc, char* argv[]) {
         cmdResults["sections"].as<uint64_t>()
     );
 
-    std::cout << "Quick Sort" << std::endl;
+    std::cout << "\e[1m" << "Quick Sort" << "\e[0m" << std::endl;
     driver.run(model::quick_sort);
     driver.save("Quick Sort", cmdResults["out"].as<std::string>() + "/quick.json");
 
-    std::cout << "Radix Sort" << std::endl;
+    std::cout << "\e[1m"  << "Radix Sort" << "\e[0m"  << std::endl;
     driver.run(model::radix_sort);
     driver.save("Radix Sort", cmdResults["out"].as<std::string>() + "/radix.json");
 
