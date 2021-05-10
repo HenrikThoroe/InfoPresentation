@@ -1,10 +1,11 @@
+#include "json.hpp"
+#include "tqdm.hpp"
+
 #include <chrono>
 #include <thread>
 #include <iostream>
 #include <fstream> 
 #include <stdio.h>
-
-#include "json.hpp"
 
 #include "driver.hpp"
 #include "sum_range.hpp"
@@ -16,29 +17,22 @@ namespace model {
 
     driver::driver(uint64_t cores, uint64_t memory, uint64_t sections) : cores(cores), memory(memory), sections(sections) {}
 
-    void driver::prepareData() {
-        constexpr int64_t gig = 1'000'000'000;
-        const int64_t totalItems = memory * gig / 8;
-        const int64_t batchSize = totalItems / util::sum_range(1, sections + 1);
-
-        data.resize(sections);
-
-        for (uint64_t i = 1; i <= sections; ++i) {
-            util::fill_random(data[i - 1], batchSize * i);
-        }
-    }
-
     void driver::run(driver::sort_function sortFunction) {
-        prepareData();
+        tqdm bar;
 
         results.clear();
         results.resize(sections);
 
         std::vector<std::thread> pool{};
 
-        for (size_t i = 0; i < data.size(); ++i) {
+        for (size_t i = 0; i < sections; ++i) {
             pool.push_back(std::thread([i, sortFunction, this] {
-                std::vector<uint64_t>& batch = data[i];
+                constexpr uint64_t gig = 1'000'000;
+                const uint64_t items = (memory * gig * (i + 1)) / (8 * sections);
+                
+                std::vector<uint64_t> batch{};
+                util::fill_random(batch, static_cast<int>(items));
+
                 std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
                 sortFunction(batch);
@@ -51,14 +45,19 @@ namespace model {
             }));
 
             // When 'cores' threads are created or end of loop is reached, wait for completion.
-            if ((i > 0 && i % cores == 0) || (i == data.size() - 1)) {
+            if ((i > 0 && i % cores == 0) || (i == sections - 1)) {
                 for (std::thread& thread : pool) {
                     thread.join();
                 }
 
                 pool.clear();
+
+                bar.progress(i, sections);
             }
         }
+
+        bar.finish();
+        std::cout << std::endl;
     }
 
     void driver::save(const std::string& algorithm, const std::string& path) const {

@@ -23,9 +23,6 @@ namespace model {
             /// The higher the more data will be available in output files 
             const uint64_t sections;
 
-            /// Data which is to be sorted
-            std::vector<std::vector<uint64_t>> data{};
-
             /// The results of the benchmark.
             /// The std::vector has the size `sections`.
             /// The array contains the number of sorted elements and the time required in us.
@@ -50,13 +47,7 @@ namespace model {
              * @param path Path to .json file
              */
             void save(const std::string& algorithm, const std::string& path) const;
-
-        private:
-            /**
-             * Prepares the `data` array by initilizing it randomly.
-             * This method will allocate the value of `memory` in gigabyte
-             */
-            void prepareData();
+            
     };
 
 }
