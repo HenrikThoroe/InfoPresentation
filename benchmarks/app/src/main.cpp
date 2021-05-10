@@ -5,6 +5,7 @@
 #include "driver.hpp"
 #include "quick_sort.hpp"
 #include "radix_sort.hpp"
+#include "merge_sort.hpp"
 
 int main(int argc, char* argv[]) {
     cxxopts::Options options("sortbench", "Command line tool to bench the performance of different sorting algorithms");
@@ -28,6 +29,10 @@ int main(int argc, char* argv[]) {
         cmdResults["memory"].as<uint64_t>(), 
         cmdResults["sections"].as<uint64_t>()
     );
+
+    std::cout << "\e[1m" << "Merge Sort" << "\e[0m" << std::endl;
+    driver.run(model::merge_sort);
+    driver.save("Merge Sort", cmdResults["out"].as<std::string>() + "/merge.json");
 
     std::cout << "\e[1m" << "Quick Sort" << "\e[0m" << std::endl;
     driver.run(model::quick_sort);
