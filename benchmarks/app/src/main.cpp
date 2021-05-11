@@ -42,5 +42,9 @@ int main(int argc, char* argv[]) {
     driver.run(model::radix_sort);
     driver.save("Radix Sort", cmdResults["out"].as<std::string>() + "/radix.json");
 
+    std::cout << "\e[1m"  << "Radix Sort - 32 Bit" << "\e[0m"  << std::endl;
+    driver.run(nullptr, model::radix_sort_32);
+    driver.save("Radix Sort 32", cmdResults["out"].as<std::string>() + "/radix32.json");
+
     return 0;
 }

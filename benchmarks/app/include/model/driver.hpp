@@ -12,6 +12,8 @@ namespace model {
         public:
             typedef void (*sort_function)(std::vector<uint64_t>&);
 
+            typedef void (*sort_function_32)(std::vector<uint32_t>&);
+
         private:
             /// Number of used cores
             const uint64_t cores;
@@ -37,8 +39,9 @@ namespace model {
              * Sorts the data using the given sorting function and meassures the required time
              * 
              * @param sortFunction Pointer to the function whose performance should be meassured
+             * @param sortFunction32 Pointer to the 32 bit function whose performance should be meassured. Fallback if sortFunction is null
              */
-            void run(sort_function sortFunction);
+            void run(sort_function sortFunction, sort_function_32 sortFunction32 = nullptr);
 
             /**
              * Saves the results of the last run to a .json file

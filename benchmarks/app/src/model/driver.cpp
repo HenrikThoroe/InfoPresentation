@@ -17,7 +17,11 @@ namespace model {
 
     driver::driver(uint64_t cores, uint64_t memory, uint64_t sections) : cores(cores), memory(memory), sections(sections) {}
 
-    void driver::run(driver::sort_function sortFunction) {
+    void driver::run(driver::sort_function sortFunction, sort_function_32 sortFunction32) {
+        if (sortFunction32 == nullptr && sortFunction == nullptr) {
+            exit(1);
+        }
+
         tqdm bar;
 
         results.clear();
@@ -26,16 +30,28 @@ namespace model {
         std::vector<std::thread> pool{};
 
         for (size_t i = 0; i < sections; ++i) {
-            pool.push_back(std::thread([i, sortFunction, this] {
+            pool.push_back(std::thread([i, sortFunction, sortFunction32, this] {
                 constexpr uint64_t gig = 1'000'000;
                 const uint64_t items = (memory * gig * (i + 1)) / (8 * sections);
                 
                 std::vector<uint64_t> batch{};
+                std::vector<uint32_t> batch32{};
+
                 util::fill_random(batch, static_cast<int>(items));
+
+                if (sortFunction == nullptr) {
+                    util::fill_random_32(batch32, static_cast<int>(items));
+                } else {
+                    util::fill_random(batch, static_cast<int>(items));
+                }
 
                 std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-                sortFunction(batch);
+                if (sortFunction == nullptr) {
+                    sortFunction32(batch32);
+                } else {
+                    sortFunction(batch);
+                }
 
                 std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
