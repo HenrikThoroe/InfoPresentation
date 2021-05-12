@@ -21,7 +21,7 @@ export default function StabilitySnippet() {
                 Def.: Ein Sortieralgorhythmus ist stabil, wenn die relative Reihenfolge nicht
                 verändert wird.
             </Text>
-            <Table>
+            <Table customStyle={{ width: "100%" }}>
                 <TableHead>
                     <TableCell>Name</TableCell>
                     <TableCell>Vorname</TableCell>
