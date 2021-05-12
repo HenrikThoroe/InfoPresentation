@@ -2,15 +2,38 @@ import { useEffect, useState } from "react"
 import Benchmarks from "./views/Benchmarks"
 import Comparison from "./views/Comparison"
 import DatabaseRequirements from "./views/DatabseRequirements"
+import EmbeededRequirements from "./views/EmbeededRequirements"
 import HowToRate from "./views/HowToRate"
 import Quote from "./views/Quote"
+import RadixApplication from "./views/RadixApplication"
 import RadixSort from "./views/RadixSort"
 import Search from "./views/Search"
 import WhySorting from "./views/WhySorting"
 
-type View = "why" | "search" | "how" | "radix" | "comp" | "bench" | "dbreq" | "quote"
+type View =
+    | "why"
+    | "search"
+    | "how"
+    | "radix"
+    | "comp"
+    | "bench"
+    | "dbreq"
+    | "quote"
+    | "application"
+    | "ebreq"
 
-const order: View[] = ["why", "search", "how", "radix", "comp", "bench", "dbreq", "quote"]
+const order: View[] = [
+    "why",
+    "search",
+    "how",
+    "radix",
+    "comp",
+    "bench",
+    "application",
+    "ebreq",
+    "dbreq",
+    "quote"
+]
 
 function App() {
     const [view, setView] = useState<View>("why")
@@ -29,10 +52,14 @@ function App() {
                 return <Comparison />
             case "bench":
                 return <Benchmarks />
+            case "ebreq":
+                return <EmbeededRequirements />
             case "dbreq":
                 return <DatabaseRequirements />
             case "quote":
                 return <Quote />
+            case "application":
+                return <RadixApplication />
 
             default:
                 return <h1>Cannot Parse View</h1>
