@@ -52,7 +52,7 @@
     border-radius: 50%;
 }
 
-.dataArray > .active::before {
+.dataArray > .active:not(.shrink)::before {
     content: "";
     position: absolute;
     display: inline-block;
@@ -66,5 +66,5 @@
 
 .dataArray > .shrink.active {
     background: none !important;
-    color: #c20000;
+    color: #f44336;
 }
