@@ -26,7 +26,9 @@ export default function DataArray(props: Props) {
                     className={csx({
                         [styles.active]: index === props.active,
                         [styles.highlighted]: isInRange(index),
-                        [styles.shrink]: props.shrink
+                        [styles.shrink]: props.shrink,
+                        [styles.first]: props.highlighted && props.highlighted[0] === index,
+                        [styles.last]: props.highlighted && props.highlighted[1] - 1 === index
                     })}
                 >
                     <Text weight="bold" size="l">
