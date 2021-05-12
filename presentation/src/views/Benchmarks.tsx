@@ -19,7 +19,7 @@ export default function Benchmarks() {
                 spacing="5rem"
                 alignment="start"
                 horizontalAlignment="center"
-                padding="10rem 0px 0px 0px"
+                padding="5rem 0px 0px 0px"
             >
                 <HStack alignment="center" verticalAlignment="center" spacing="1rem" shrinkHeight>
                     <Text size="xxl" weight="bold">
