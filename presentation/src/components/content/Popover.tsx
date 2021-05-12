@@ -11,16 +11,17 @@ export interface Props {
 
 export default function Popover(props: Props) {
     return (
-        <div
-            className={styles["popover-container"]}
-            style={{ visibility: props.shown ? "visible" : "hidden" }}
-        >
-            <div className={styles["popover-bg"]} />
-            <div className={styles["popover-fg"]}>
-                <OutsideClickListener onClick={props.onClose ?? (() => {})}>
-                    <Box shadow={3}>{props.children}</Box>
-                </OutsideClickListener>
-            </div>
-        </div>
+        <>
+            {props.shown && (
+                <div className={styles["popover-container"]}>
+                    <div className={styles["popover-bg"]} />
+                    <div className={styles["popover-fg"]}>
+                        <OutsideClickListener onClick={props.onClose ?? (() => {})}>
+                            <Box shadow={3}>{props.children}</Box>
+                        </OutsideClickListener>
+                    </div>
+                </div>
+            )}
+        </>
     )
 }
