@@ -37,7 +37,14 @@ export default function Benchmarks() {
                             margin={{ bottom: 30, left: 30, right: 30, top: 30 }}
                             data={fetchBenchmarkData()}
                         >
-                            <XAxis dataKey="size">
+                            <XAxis
+                                dataKey="size"
+                                tickFormatter={(val: number) =>
+                                    val.toLocaleString("de-DE", {
+                                        maximumFractionDigits: 2
+                                    })
+                                }
+                            >
                                 <Label position="insideTopRight" offset={30}>
                                     Größe der Datenmenge (n)
                                 </Label>
