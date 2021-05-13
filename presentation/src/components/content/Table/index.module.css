@@ -5,6 +5,10 @@
     position: relative;
 }
 
+.tableRow.highlighted {
+    background: rgb(206, 206, 206);
+}
+
 .tableRow:not(:last-of-type):after {
     content: "";
     display: inline-block;
