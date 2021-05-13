@@ -33,35 +33,30 @@ const defaultBuckets = Array.from({ length: 10 }, () => [])
 const defaultDigit = 2
 
 const code = `
-#include <algorithm>
-#include <array>
-#include <cstdint>
-#include <vector>
+void radix_sort(std::vector<uint64_t>& data) {
+    std::array<std::vector<uint64_t>, 2> buckets{};
 
-using namespace std;
+    // O(l), wo l die Bitbreite der zu sortierenden Zahlen ist. 
+    // Hier: 64
+    for (int i = 0; i < 64; ++i) {
+        
+        for (const uint64_t& entry : data) {
+            // 'entry >> i' verschiebt entry um i Stellen nach rechts.
+            // Daher ist die i'te Stelle das LSB.
+            // '& 1' wendet eine Bitmaske auf den Integer an, wo lediglich das LSB übernommen wird.
+            // Insofern ist das Resultat entweder 0 oder 1, je nachdem welchen Wert das Bit an der 
+            // i'ten Stelle von 'entry' hatte.
+            buckets[(entry >> i) & 1].push_back(entry);
+        }
 
-template <typename ForwardIt>
-void radix_sort(ForwardIt begin, ForwardIt end) {
-    // Falls Container leer ist
-    if (begin == end)
-        return;
+        // 'buckets' beinhaltet die Zahlen von 'data' in an den Stellen x >= i sortierten Reihenfolge
+        // Für den nächsten Durchlauf müssen die sortierten Zahlen also wieder in 'data' kopiert werden
+        std::copy(buckets[0].begin(), buckets[0].end(), data.begin());
+        std::copy(buckets[1].begin(), buckets[1].end(), data.begin() + buckets[0].size());
 
-    // Partitionierung
-    array<vector<uint32_t>, 2> partition;
-
-    // Schleife über alle 32 Bits
-    for (uint32_t bit = 0; bit < 32; ++bit) {
-        // Bit ermitteln und im Segment abbilden
-        for (ForwardIt iterator = begin; iterator != end; ++iterator)
-            partition[(*iterator >> bit) & 1].push_back(*iterator);
-
-        // Änderungen aus jedem Segment übernehmen
-        copy(partition[0].begin(), partition[0].end(), begin);
-        copy(partition[1].begin(), partition[1].end(),
-            begin + partition[0].size());
-
-        partition[0].clear();
-        partition[1].clear();
+        // Zwischenspeicher leeren
+        buckets[0].clear();
+        buckets[1].clear();
     }
 }
 `
