@@ -11,7 +11,7 @@ export default function RuntimeSnippet() {
             </Text>
             <Text weight="bold">
                 Def.: Wie verhält sich die Zeit, die der Algorhythmus zur Ausführung braucht, im
-                Verhältnis zur Eingabe?
+                Verhältnis zum Umfang der Eingabe?
             </Text>
             <ResponsiveContainer width="90%" height={400}>
                 <AreaChart
