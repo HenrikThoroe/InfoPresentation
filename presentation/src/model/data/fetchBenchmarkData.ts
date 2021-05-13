@@ -1,14 +1,14 @@
 import radix from "./radix.json"
 import radix32 from "./radix32.json"
 import quick from "./quick.json"
-import merge from "./merge.json"
+import quick32 from "./quick32.json"
 
 export interface BenchmarkEntry {
     size: number
     time: {
         quicksort: number
         radixsort: number
-        mergesort: number
+        quicksort32: number
         radixsort32: number
     }
 }
@@ -26,7 +26,7 @@ export default function fetchBenchmarkData(): BenchmarkEntry[] {
             time: {
                 radixsort: radix.results[i].time / 1000000,
                 quicksort: quick.results[i].time / 1000000,
-                mergesort: merge.results[i].time / 1000000,
+                quicksort32: quick32.results[i].time / 1000000,
                 radixsort32: radix32.results[i].time / 1000000
             }
         })
