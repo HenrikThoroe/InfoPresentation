@@ -30,13 +30,13 @@ int main(int argc, char* argv[]) {
         cmdResults["sections"].as<uint64_t>()
     );
 
-    std::cout << "\e[1m" << "Merge Sort" << "\e[0m" << std::endl;
-    driver.run(model::merge_sort);
-    driver.save("Merge Sort", cmdResults["out"].as<std::string>() + "/merge.json");
-
     std::cout << "\e[1m" << "Quick Sort" << "\e[0m" << std::endl;
     driver.run(model::quick_sort);
     driver.save("Quick Sort", cmdResults["out"].as<std::string>() + "/quick.json");
+
+    std::cout << "\e[1m" << "Quick Sort - 32 Bit" << "\e[0m" << std::endl;
+    driver.run(nullptr, model::quick_sort_32);
+    driver.save("Quick Sort 32", cmdResults["out"].as<std::string>() + "/quick32.json");
 
     std::cout << "\e[1m"  << "Radix Sort" << "\e[0m"  << std::endl;
     driver.run(model::radix_sort);
