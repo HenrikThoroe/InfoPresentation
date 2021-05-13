@@ -11,7 +11,7 @@ export default function Benchmarks() {
     const [showRadix, setShowRadix] = useState(false)
     const [showRadix32, setShowRadix32] = useState(false)
     const [showQuick, setShowQuick] = useState(false)
-    const [showMerge, setShowMerge] = useState(false)
+    const [showQuick32, setShowQuick32] = useState(false)
 
     return (
         <Container overflow="hidden" width="100vw" height="100vh">
@@ -77,10 +77,10 @@ export default function Benchmarks() {
                                     strokeLinecap="round"
                                 />
                             )}
-                            {showMerge && (
+                            {showQuick32 && (
                                 <Line
-                                    name="Merge"
-                                    dataKey="time.mergesort"
+                                    name="Quick 32"
+                                    dataKey="time.quicksort32"
                                     type="monotone"
                                     stroke="#ffc658"
                                     dot={false}
@@ -128,9 +128,12 @@ export default function Benchmarks() {
                         </HStack>
 
                         <HStack verticalAlignment="center" spacing="1rem" shrinkHeight shrinkWidth>
-                            <Switch onChange={check => setShowMerge(check)} checked={showMerge} />
+                            <Switch
+                                onChange={check => setShowQuick32(check)}
+                                checked={showQuick32}
+                            />
                             <Text size="m" weight="bold">
-                                Merge Sort
+                                Quick Sort 32
                             </Text>
                         </HStack>
                     </VStack>
