@@ -8,6 +8,7 @@ import Quote from "./views/Quote"
 import RadixApplication from "./views/RadixApplication"
 import RadixSort from "./views/RadixSort"
 import Search from "./views/Search"
+import Welcome from "./views/Welcome"
 import WhySorting from "./views/WhySorting"
 
 type View =
@@ -21,25 +22,28 @@ type View =
     | "quote"
     | "application"
     | "ebreq"
+    | "welcome"
 
 const order: View[] = [
+    "welcome",
     "why",
     "search",
     "how",
     "radix",
     "comp",
     "bench",
-    "application",
     "ebreq",
     "dbreq",
     "quote"
 ]
 
 function App() {
-    const [view, setView] = useState<View>("why")
+    const [view, setView] = useState<View>("welcome")
 
     const parseView = () => {
         switch (view) {
+            case "welcome":
+                return <Welcome />
             case "why":
                 return <WhySorting />
             case "search":
