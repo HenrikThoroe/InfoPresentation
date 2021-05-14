@@ -18,7 +18,7 @@ export default function Circle(props: Props) {
         const rect = circleRef.current.getBoundingClientRect()
         const radius = Math.min(rect.width, rect.height) / 2
 
-        for (const [index, _] of props.children.entries()) {
+        for (const [index] of props.children.entries()) {
             const angle = (Math.PI * 2 * index) / childCount + Math.PI
             const rect = document
                 .querySelector<HTMLDivElement>(`#cc-${index}`)!
