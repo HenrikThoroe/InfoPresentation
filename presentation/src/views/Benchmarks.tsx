@@ -64,6 +64,7 @@ export default function Benchmarks() {
                                     dot={false}
                                     strokeWidth={2}
                                     strokeLinecap="round"
+                                    key="radix"
                                 />
                             )}
                             {showQuick && (
@@ -75,6 +76,7 @@ export default function Benchmarks() {
                                     dot={false}
                                     strokeWidth={2}
                                     strokeLinecap="round"
+                                    key="quick"
                                 />
                             )}
                             {showQuick32 && (
@@ -86,6 +88,7 @@ export default function Benchmarks() {
                                     dot={false}
                                     strokeWidth={2}
                                     strokeLinecap="round"
+                                    key="quick32"
                                 />
                             )}
                             {showRadix32 && (
@@ -97,6 +100,7 @@ export default function Benchmarks() {
                                     dot={false}
                                     strokeWidth={2}
                                     strokeLinecap="round"
+                                    key="radix32"
                                 />
                             )}
                         </LineChart>
