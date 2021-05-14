@@ -2,6 +2,8 @@ import { useContext } from "react"
 import HeaderContext from "./HeaderContext"
 import styles from "./index.module.css"
 import csx from "classnames"
+import Text from "../Text"
+import React from "react"
 
 export interface Props {
     children?: React.ReactNode
@@ -11,6 +13,11 @@ export interface Props {
 export default function TableCell(props: Props) {
     const isHeader = useContext(HeaderContext)
 
+    const content = () =>
+        React.Children.map(props.children, child =>
+            typeof child === "string" ? <Text>{child}</Text> : child
+        )
+
     if (isHeader) {
         return (
             <th
@@ -18,14 +25,14 @@ export default function TableCell(props: Props) {
                     [styles.centered]: props.centered
                 })}
             >
-                {props.children}
+                {content()}
             </th>
         )
     }
 
     return (
         <td className={csx(styles.tableCell, { [styles.centered]: props.centered })}>
-            {props.children}
+            {content()}
         </td>
     )
 }
