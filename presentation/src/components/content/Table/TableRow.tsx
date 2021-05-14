@@ -14,6 +14,7 @@ export default function TableRow(props: Props) {
     const trigger = (e: MouseEvent<HTMLTableRowElement, any>) => {
         if (e.altKey) {
             e.preventDefault()
+            e.stopPropagation()
             setIsHighlighted(!isHighlighted)
         }
     }
@@ -22,7 +23,7 @@ export default function TableRow(props: Props) {
         <tr
             className={csx(styles.tableRow, {
                 [styles.tableHeader]: isHeader,
-                [styles.highlighted]: isHighlighted
+                [styles.highlightedRow]: isHighlighted
             })}
             onClick={trigger}
         >

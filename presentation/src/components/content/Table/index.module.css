@@ -1,12 +1,27 @@
 .table {
+    /* position: relative; */
+    z-index: 10;
+    background: transparent;
 }
 
 .tableRow {
     position: relative;
+    z-index: 10;
+    background: transparent;
 }
 
-.tableRow.highlighted {
-    background: rgb(206, 206, 206);
+.highlightedRow .tableCell::after {
+    content: "";
+
+    display: inline-block;
+    position: absolute;
+    z-index: 0;
+    background: rgba(173, 216, 230, 1);
+    pointer-events: none;
+    width: 100%;
+    height: calc(100% + 2px);
+    top: -2px;
+    left: 0;
 }
 
 .tableRow:not(:last-of-type):after {
@@ -28,7 +43,14 @@
 }
 
 .tableCell {
+    z-index: 10;
     padding: 0.5rem;
+    background: transparent;
+}
+
+.tableCell * {
+    z-index: 10;
+    position: relative;
 }
 
 .tableCell.centered {
