@@ -1,7 +1,6 @@
 import React from "react"
 import HeaderContext from "./HeaderContext"
 import TableRow from "./TableRow"
-import styles from "./index.module.css"
 
 export interface Props {
     children: React.ReactNode

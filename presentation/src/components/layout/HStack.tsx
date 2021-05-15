@@ -1,7 +1,6 @@
 import React from "react"
 import ReactProps from "../../utils/ReactProps"
 import Stack, { Alignment } from "./Stack"
-import classNames from "classnames"
 
 export interface Props extends ReactProps<HTMLDivElement> {
     spacing?: string
