@@ -5,6 +5,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{graphicx}
+\usepackage{forloop}
 \graphicspath{ {./images/} }
 \captionsetup[figure]{labelformat=empty}
 
@@ -237,130 +238,13 @@
 
     \clearpage
 
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-1}}
-        \caption{Abbildung 1}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-2}}
-        \caption{Abbildung 2}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-3}}
-        \caption{Abbildung 3}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-4}}
-        \caption{Abbildung 4}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-5}}
-        \caption{Abbildung 5}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-6}}
-        \caption{Abbildung 6}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-7}}
-        \caption{Abbildung 7}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-8}}
-        \caption{Abbildung 8}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-9}}
-        \caption{Abbildung 9}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-10}}
-        \caption{Abbildung 10}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-11}}
-        \caption{Abbildung 11}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-12}}
-        \caption{Abbildung 12}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-13}}
-        \caption{Abbildung 13}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-14}}
-        \caption{Abbildung 14}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-15}}
-        \caption{Abbildung 15}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-16}}
-        \caption{Abbildung 16}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-17}}
-        \caption{Abbildung 17}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-18}}
-        \caption{Abbildung 18}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-19}}
-        \caption{Abbildung 19}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-20}}
-        \caption{Abbildung 20}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \fbox{\includegraphics[width=\linewidth]{Abbildung-21}}
-        \caption{Abbildung 21}
-    \end{figure}
+    \newcounter{image}
+    \forloop{image}{1}{\value{image} < 22}{
+        \begin{figure}
+            \centering
+            \fbox{\includegraphics[width=\linewidth]{Abbildung-\arabic{image}}}
+            \caption{Abbildung \arabic{image}}
+        \end{figure}
+    }
 
 \end{document}
