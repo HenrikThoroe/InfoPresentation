@@ -107,31 +107,36 @@ export default function Search() {
 
     return (
         <Container overflow="hidden" width="100vw" height="100vh">
-            <VStack spacing="3rem" alignment="center" horizontalAlignment="center">
-                <ClickListener onClick={() => setAnimation("unsorted")}>
-                    <Box shadow={animation === "unsorted" ? 5 : 1}>
-                        <VStack spacing="1rem">
-                            <Text size="l" weight="bold">
-                                Unsortiert
-                            </Text>
-                            <DataArray numbers={unsorted} active={unsortedActive} />
-                        </VStack>
-                    </Box>
-                </ClickListener>
-                <ClickListener onClick={() => setAnimation("sorted")}>
-                    <Box shadow={animation === "sorted" ? 5 : 1}>
-                        <VStack spacing="1rem">
-                            <Text size="l" weight="bold">
-                                Sortiert
-                            </Text>
-                            <DataArray
-                                numbers={sorted}
-                                active={sortedActive}
-                                highlighted={sortedHighlighted}
-                            />
-                        </VStack>
-                    </Box>
-                </ClickListener>
+            <VStack spacing="8rem" alignment="center" horizontalAlignment="center">
+                <Text size="xxl" weight="bold">
+                    Wo ist die 18?
+                </Text>
+                <VStack spacing="3rem" alignment="center" horizontalAlignment="center" shrinkHeight>
+                    <ClickListener onClick={() => setAnimation("unsorted")}>
+                        <Box shadow={animation === "unsorted" ? 5 : 1}>
+                            <VStack spacing="1rem">
+                                <Text size="l" weight="bold">
+                                    Unsortiert
+                                </Text>
+                                <DataArray numbers={unsorted} active={unsortedActive} />
+                            </VStack>
+                        </Box>
+                    </ClickListener>
+                    <ClickListener onClick={() => setAnimation("sorted")}>
+                        <Box shadow={animation === "sorted" ? 5 : 1}>
+                            <VStack spacing="1rem">
+                                <Text size="l" weight="bold">
+                                    Sortiert
+                                </Text>
+                                <DataArray
+                                    numbers={sorted}
+                                    active={sortedActive}
+                                    highlighted={sortedHighlighted}
+                                />
+                            </VStack>
+                        </Box>
+                    </ClickListener>
+                </VStack>
             </VStack>
         </Container>
     )
