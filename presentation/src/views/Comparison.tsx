@@ -44,7 +44,7 @@ export default function Comparison() {
                         <TableCell>
                             <Text weight="bold">Speicherbedarf</Text>
                         </TableCell>
-                        <TableCell centered>O(1)</TableCell>
+                        <TableCell centered>O(logn)</TableCell>
                         <TableCell centered>O(n)</TableCell>
                     </TableRow>
                     <TableRow>
