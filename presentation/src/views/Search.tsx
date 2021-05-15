@@ -7,6 +7,41 @@ import Container from "../components/layout/Container"
 import VStack from "../components/layout/VStack"
 import sleep from "../utils/sleep"
 
+const unsorted = [
+    15,
+    12,
+    4,
+    8,
+    14,
+    3,
+    25,
+    18,
+    6,
+    20,
+    24,
+    7,
+    2,
+    29,
+    13,
+    22,
+    9,
+    11,
+    10,
+    26,
+    17,
+    21,
+    19,
+    5,
+    28,
+    0,
+    23,
+    16,
+    1,
+    27
+]
+
+const sorted = [...unsorted].sort((a, b) => a - b)
+
 export default function Search() {
     const [animation, setAnimation] = useState<"unsorted" | "sorted" | null>(null)
     const [unsortedActive, setUnsortedActive] = useState<number | undefined>(undefined)
@@ -16,7 +51,8 @@ export default function Search() {
     )
 
     const animateUnsorted = async () => {
-        for (let i = 0; i < 5; ++i) {
+        const toFind = 18
+        for (let i = 0; i <= unsorted.findIndex(u => u === toFind); ++i) {
             setUnsortedActive(i)
             await sleep(500)
         }
@@ -27,22 +63,35 @@ export default function Search() {
     }
 
     const animateSorted = async () => {
-        setSortedActive(4)
-        await sleep(500)
-        setSortedActive(undefined)
-        setSortedHighlighted([0, 4])
-        await sleep(1000)
-        setSortedHighlighted(undefined)
+        const toFind = 18
+        let number: number
+        let start = 0
+        let end = sorted.length
 
-        setSortedActive(1)
-        await sleep(500)
-        setSortedActive(undefined)
-        setSortedHighlighted([0, 1])
-        await sleep(1000)
-        setSortedHighlighted(undefined)
+        do {
+            let mid = Math.floor((end - start) / 2) + start
 
-        setSortedActive(0)
-        await sleep(2000)
+            number = sorted[mid]
+            setSortedActive(mid)
+            await sleep(500)
+
+            if (number > toFind) {
+                end = mid
+            }
+
+            if (number < toFind) {
+                start = mid + 1
+            }
+
+            if (number !== toFind) {
+                setSortedActive(undefined)
+                setSortedHighlighted([start, end])
+                await sleep(1000)
+                setSortedHighlighted(undefined)
+            }
+        } while (number !== toFind)
+
+        await sleep(1000)
         setSortedActive(undefined)
     }
 
@@ -65,10 +114,7 @@ export default function Search() {
                             <Text size="l" weight="bold">
                                 Unsortiert
                             </Text>
-                            <DataArray
-                                numbers={[8, 3, 2, 6, 0, 1, 7, 9, 5, 4]}
-                                active={unsortedActive}
-                            />
+                            <DataArray numbers={unsorted} active={unsortedActive} />
                         </VStack>
                     </Box>
                 </ClickListener>
@@ -79,7 +125,7 @@ export default function Search() {
                                 Sortiert
                             </Text>
                             <DataArray
-                                numbers={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                                numbers={sorted}
                                 active={sortedActive}
                                 highlighted={sortedHighlighted}
                             />
