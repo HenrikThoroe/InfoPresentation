@@ -6,6 +6,7 @@
 \usepackage{subcaption}
 \usepackage{graphicx}
 \usepackage{forloop}
+\usepackage{tabularx}
 \graphicspath{ {./images/} }
 \captionsetup[figure]{labelformat=empty}
 
@@ -211,14 +212,50 @@
     Da das Projekt später frei zugänglich sein soll, sind technische Beschreibungen und Kommentare 
     in branchentypischer englischer Sprache verfasst. So auch die README Dateien.
     Für eine Betrachtung des Projekts ist die Verwendung eines dedizierten Editors empfohlen.
-    Am besten ist meiner Meinung nach Microsofts open-source Visual Studio Code geeignet.
+    Am besten ist meiner Meinung nach Microsofts open-source Visual Studio Code geeignet. \\
+    Verwendete dritt Anbieter Libraries / Frameworks:
+
+    \vspace{0.5cm}
+
+    \begin{tabularx}{\textwidth}{p{0.2\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}}
+    Name & Link & Beschreibung \\
+
+    \hline
+
+    React & https://reactjs.org/ & JavaScript Framework zum erstellen von Web Apps \\
+
+    \hline
+
+    recharts & https://recharts.org/en-US/ & React Library zum Anzeigen von Graphen \\
+    
+    \hline
+    
+    cxxopts & https://github.com/ \allowbreak jarro2783/cxxopts & C++ Library zum Lesen von Command Line Arguments \\
+    
+    \hline
+    
+    nlohmann/json & https://github.com/ \allowbreak nlohmann/json & C++ Library zum Erstellen von JSON Dateien \\
+    
+    \hline
+    
+    tqdm & https://github.com/ \allowbreak aminnj/cpptqdm & C++ Library zum Anzeigen von Verlaufs-Balken in der Command Line \\
+    
+    \hline
+    
+    classnames & https://www.npmjs.com/ \allowbreak package/classnames & NPM Package zum einfachen Zusammenfügen mehrer CSS Klassen Namen \\
+    
+    \hline
+    
+    unistd\_win.h & https://github.com/ \allowbreak win32ports/unistd\_h & Drop-In Header Datei, um Einbinde Fehler in einer Windows Umgebung zu verhindern \\
+    
+    \end{tabularx}
 
 
     \cleardoublepage
     \section{Eigenständigkeitserklärung}
 
-    Hiermit bestätige ich, dass ich keine hier nicht aufgeführten Quellen verwendet habe, sowie 
-    die Präsentation ohne Hilfe dritter erstellt habe. 
+    Hiermit bestätige ich, dass ich keine hier nicht aufgeführten Hilfsmittel verwendet habe, sowie 
+    die Präsentation und Dokumentation ohne Hilfe Dritter erstellt habe. 
 
     \vspace{6cm}
 
