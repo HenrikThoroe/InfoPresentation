@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Benchmarks from "./views/Benchmarks"
 import Comparison from "./views/Comparison"
 import DatabaseRequirements from "./views/DatabseRequirements"
@@ -70,36 +70,39 @@ function App() {
         }
     }
 
-    const next = () => {
+    const next = useCallback(() => {
         const index = order.findIndex(value => value === view)
 
         if (index < order.length - 1) {
             setView(order[index + 1])
         }
-    }
+    }, [view])
 
-    const prev = () => {
+    const prev = useCallback(() => {
         const index = order.findIndex(value => value === view)
 
         if (index > 0) {
             setView(order[index - 1])
         }
-    }
+    }, [view])
 
-    const handleKeyEvent = (e: KeyboardEvent) => {
-        if (e.code === "ArrowRight") {
-            next()
-        } else if (e.code === "ArrowLeft") {
-            prev()
-        }
-    }
+    const handleKeyEvent = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.code === "ArrowRight") {
+                next()
+            } else if (e.code === "ArrowLeft") {
+                prev()
+            }
+        },
+        [next, prev]
+    )
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyEvent)
         return () => {
             document.removeEventListener("keydown", handleKeyEvent)
         }
-    }, [view])
+    }, [view, handleKeyEvent])
 
     return parseView()
 }
