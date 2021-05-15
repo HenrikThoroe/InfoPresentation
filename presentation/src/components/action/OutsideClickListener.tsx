@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useCallback, useEffect, useRef } from "react"
 
 export interface Props {
     children: React.ReactNode
@@ -8,17 +8,20 @@ export interface Props {
 export default function OutsideClickListener(props: Props) {
     const ref = useRef<HTMLSpanElement>(null)
 
-    const handleClick = (event: MouseEvent) => {
-        if (ref.current && event.target && !ref.current.contains(event.target as Node)) {
-            event.preventDefault()
-            props.onClick()
-        }
-    }
+    const handleClick = useCallback(
+        (event: MouseEvent) => {
+            if (ref.current && event.target && !ref.current.contains(event.target as Node)) {
+                event.preventDefault()
+                props.onClick()
+            }
+        },
+        [props]
+    )
 
     useEffect(() => {
         window.addEventListener("mousedown", handleClick)
         return () => window.removeEventListener("mousedown", handleClick)
-    }, [])
+    }, [handleClick])
 
     return <span ref={ref}>{props.children}</span>
 }
