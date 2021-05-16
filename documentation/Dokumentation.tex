@@ -8,6 +8,8 @@
 \usepackage{forloop}
 \usepackage{tabularx}
 \usepackage{afterpage}
+\usepackage[english]{babel}
+\usepackage[ngerman]{datetime}
 
 \newcommand\blankpage{%
     \null
@@ -15,6 +17,7 @@
     \addtocounter{page}{-1}%
     \newpage}
 
+\newdateformat{german}{\THEDAY{. }\monthnamengerman[\THEMONTH], \THEYEAR}
 \graphicspath{ {./images/} }
 \captionsetup[figure]{labelformat=empty}
 
@@ -39,7 +42,7 @@
 
         \vfill
 
-        {\large \today\par}
+        {\large \german\today\par}
         \afterpage{\blankpage}
     \end{titlepage}
 
