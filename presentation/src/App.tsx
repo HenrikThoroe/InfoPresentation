@@ -25,9 +25,8 @@ type View =
     | "welcome"
 
 const order: View[] = [
-    "welcome",
-    "why",
     "search",
+    "welcome",
     "how",
     "radix",
     "comp",
@@ -38,7 +37,7 @@ const order: View[] = [
 ]
 
 function App() {
-    const [view, setView] = useState<View>("welcome")
+    const [view, setView] = useState<View>("search")
 
     const parseView = () => {
         switch (view) {
