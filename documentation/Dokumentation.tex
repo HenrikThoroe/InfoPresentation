@@ -48,26 +48,27 @@
 
     \section{Gliederung}
 
-    \subsection{Begrüßung}
+    \subsection{Aufhänger}
 
     \begin{itemize}
         \item Abbildung 1
-        \item Nennung des Themas
-        \item Leitfrage: Was sind nicht vergleichsbasierte Sortierverfahren und sind sie vergleichsbasierten Verfahren überlegen
+        \item Frage stellen, wo in beiden Listen die 18 ist
+        \item Zeigen, dass Sortieren sehr wichtig sein kann
+        \item Visualisierung von Binary Search und linearer Suche
     \end{itemize}
 
-    \subsection{Hinführung}
+    \subsection{Begrüßung}
 
     \begin{itemize}
-        \item Abbildung 2 - 3
-        \item Frage aufstellen, warum sortiert werden muss
-        \item Beantwortung der Frage und Visualisierung von Binary Search
+        \item Abbildung 2
+        \item Nennung des Themas
+        \item Leitfrage: Was sind nicht vergleichsbasierte Sortierverfahren und sind sie vergleichsbasierten Verfahren überlegen
     \end{itemize}
 
     \subsection{Heranführung an Sortierverfahren}
 
     \begin{itemize}
-        \item Abbildung 4 - 8
+        \item Abbildung 3 - 7
         \item Kurze Erklärung, was Sortierverfahren ausmacht
         \item Laufzeit und Stabilität aufzeigen
         \item Erwähnen, dass für klassische vergleichsbasierte Verfahren $O(n \cdot log(n))$ gilt
@@ -76,8 +77,7 @@
     \subsection{Vorstellung von Radix Sort}
 
     \begin{itemize}
-        \item Abbildung 9 - 12
-        \item Aufbauend auf vorherigen Punkten verdeutlichen, dass Sortieren nie effektiv genug sein kann
+        \item Abbildung 8 - 11
         \item Am Beispiel erläutern, dass es auch ohne Vergleiche geht, solange man Annahmen über die Daten treffen kann
         \item Funktionsweise von Radix Sort nachstellen
         \item Implementation in C++ zeigen und mit Visualisierung erläutern 
@@ -86,14 +86,12 @@
     \subsection{Vergleich Radix Sort mit Quick Sort}
 
     \begin{itemize}
-        \item Abbildung 13 - 16
+        \item Abbildung 12 - 13
         \item Tabellarische Gegenüberstellung
         \item Erwähnen, dass es noch MSD Radix Sort gibt, dass instabil ist, dafür aber eine Speicheranforderung von $O(1)$ besitzt
         \item Vermutung aufstellen, dass Radix Sort deutlich schneller sein müsste
-        \item Benchmark zeigen, der Radix Sort zeigt
-        \item Vergleich mit der Kurve von Quick Sort, die deutlich kleiner ist
-        \item Frage stellen, ob die Vermutung nun wiederlegt ist
-        \item Vergleich der kurven beider Verfahren mit 32 Bit Daten
+        \item Benchmarks von Radix und Quick Sort zeigen
+        \item Vergleich der Kurven beider Verfahren mit 32 Bit Daten
         \item Bedeutung der Konstanten bei der groß O Notation aufzeigen
         \item Vorteile von Radix Sort zeigen: Skalliert besser bei kleinen Bit-Weiten (l) und großen Datenmengen (n)
     \end{itemize}
@@ -101,7 +99,7 @@
     \subsection{Anwendungsbereich: IoT}
 
     \begin{itemize}
-        \item Abbildung 17 - 18
+        \item Abbildung 14
         \item Auflistung der gezeigten Kriterien und eventuell Erklärung
         \item Schlussfolgerung: Radix Sort ist sehr gut geeignet
     \end{itemize}
@@ -109,7 +107,7 @@
     \subsection{Anwendungsbereich: Datenbanken}
 
     \begin{itemize}
-        \item Abbildung 19 - 20
+        \item Abbildung 15
         \item Arbeitsspeicher: Nur die MSD Variante geeignet, womit der Stabilitätsvorteil verloren geht
         \item Parallelisierung: Prinzipiell gut geeignet
         \item Datentypen: Nicht geeignet, da RDBMS mit SQL viele Typen kennt, von denen die meisten entweder groß oder sogar variabel sind
@@ -120,7 +118,7 @@
     \subsection{Fazit}
 
    \begin{itemize}
-        \item Abbildung 21
+        \item Abbildung 16
         \item Bezug zum Zitat: Es gibt nicht das eine, beste, Sortierverfahren
         \item Nicht vergleichsbasiertes Sortieren ist in einigen Fällen eine schlaue Alternative, um spezielle Daten effektiver zu sortieren
         \item Vergleichsbasiertes Sortieren ist allgemeiner einzusetzen und daher populärer
@@ -276,7 +274,7 @@
     \clearpage
 
     \newcounter{image}
-    \forloop{image}{1}{\value{image} < 22}{
+    \forloop{image}{1}{\value{image} < 17}{
         \begin{figure}
             \centering
             \fbox{\includegraphics[width=\linewidth]{Abbildung-\arabic{image}}}
