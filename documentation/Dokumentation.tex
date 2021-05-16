@@ -7,6 +7,14 @@
 \usepackage{graphicx}
 \usepackage{forloop}
 \usepackage{tabularx}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 \graphicspath{ {./images/} }
 \captionsetup[figure]{labelformat=empty}
 
@@ -32,6 +40,7 @@
         \vfill
 
         {\large \today\par}
+        \afterpage{\blankpage}
     \end{titlepage}
 
 
@@ -272,6 +281,7 @@
     }
 
     \clearpage
+    \null\clearpage
 
     \newcounter{image}
     \forloop{image}{1}{\value{image} < 17}{
