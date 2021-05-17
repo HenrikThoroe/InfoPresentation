@@ -1,0 +1,27 @@
+.container {
+    display: inline-block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.main,
+.sec {
+    display: inline-block;
+    position: absolute;
+    background: rgb(255, 153, 0);
+    width: 20px;
+    bottom: 0;
+    border-radius: 10px;
+    height: 100px;
+}
+
+.main {
+    right: 40%;
+    transform: rotate(45deg);
+}
+
+.sec {
+    left: 40%;
+    transform: rotate(-45deg);
+}

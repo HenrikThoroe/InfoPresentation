@@ -1,0 +1,75 @@
+.stack {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.stack > * {
+    max-width: var(--maxWidth, auto);
+    min-width: var(--minWidth, auto);
+}
+
+.stack.row {
+    flex-direction: row;
+}
+
+.stack.row > .spacer {
+    margin-right: var(--spacing);
+}
+
+.stack.column {
+    flex-direction: column;
+}
+
+.stack.column > .spacer {
+    margin-bottom: var(--spacing);
+}
+
+.stack.ma-start {
+    justify-content: flex-start;
+}
+
+.stack.ma-end {
+    justify-content: flex-end;
+}
+
+.stack.ma-center {
+    justify-content: center;
+}
+
+.stack.ma-stretch {
+    justify-content: stretch;
+}
+
+.stack.ma-spaceBetween {
+    justify-content: space-between;
+}
+
+.stack.ma-spaceAround {
+    justify-content: space-around;
+}
+
+.stack.sa-start {
+    align-items: flex-start;
+}
+
+.stack.sa-end {
+    align-items: flex-end;
+}
+
+.stack.sa-center {
+    align-items: center;
+}
+
+.stack.sa-stretch {
+    align-items: stretch;
+}
+
+.stack.sa-spaceBetween {
+    align-items: space-between;
+}
+
+.stack.sa-spaceAround {
+    align-items: space-around;
+}

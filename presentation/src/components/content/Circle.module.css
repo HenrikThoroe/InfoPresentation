@@ -1,0 +1,11 @@
+.circle {
+    position: absolute;
+    display: inline-block;
+    pointer-events: none;
+}
+
+.circleChild {
+    position: absolute;
+    transition: opacity 0.5s ease-in, left 0.5s ease-in, top 0.5s ease-in;
+    width: 20rem;
+}

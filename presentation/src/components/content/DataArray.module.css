@@ -1,0 +1,70 @@
+.dataArray {
+    all: unset;
+    display: inline-block;
+    z-index: 0;
+    position: relative;
+}
+
+.dataArray > li {
+    appearance: none;
+    -webkit-appearance: none;
+    all: inherit;
+    width: 2.3rem;
+    height: 2.3rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataArray > li > * {
+    z-index: 2;
+    position: relative;
+}
+
+.dataArray > .shrink {
+    width: fit-content;
+}
+
+/* .dataArray > li:nth-child(odd) {
+    background: rgb(192, 192, 192);
+} */
+
+.dataArray > .highlighted::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: #2196f3;
+    transform: translateY(3%);
+    width: 2.3rem;
+    height: 2.3rem;
+    z-index: 1;
+}
+
+.dataArray > .highlighted.first::before {
+    border-radius: 50% 0px 0px 50%;
+}
+
+.dataArray > .highlighted.last::before {
+    border-radius: 0px 50% 50% 0px;
+}
+
+.dataArray > .highlighted.last.first::before {
+    border-radius: 50%;
+}
+
+.dataArray > .active:not(.shrink)::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: #f44336;
+    border-radius: 50%;
+    transform: translateY(3%);
+    width: 2.3rem;
+    height: 2.3rem;
+    z-index: 1;
+}
+
+.dataArray > .shrink.active {
+    background: none !important;
+    color: #f44336;
+}

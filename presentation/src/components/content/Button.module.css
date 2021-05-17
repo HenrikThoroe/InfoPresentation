@@ -1,0 +1,25 @@
+.button {
+    appearance: none;
+
+    display: inline-block;
+    background: #005b9f;
+    color: #fff;
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    transition: box-shadow 0.2s linear, background 0.1s linear;
+}
+
+.button:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.button.clicked {
+    background: #0288d1;
+    box-shadow: none;
+}
