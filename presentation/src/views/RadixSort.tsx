@@ -127,7 +127,7 @@ export default function RadixSort() {
                 spacing="5rem"
                 alignment="start"
                 horizontalAlignment="center"
-                padding="10rem 0px 0px 0px"
+                padding="5rem 0px 0px 0px"
             >
                 <Text size="xxl" weight="bold">
                     Radix Sort
